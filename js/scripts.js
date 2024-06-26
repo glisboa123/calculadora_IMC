@@ -7,6 +7,9 @@ const situacaoIMC = document.querySelector(".situacao");
 const pagCalculo = document.querySelector(".dados-calculadora");
 const pagResultado = document.querySelector(".resultado");
 const btnVoltar = document.querySelector(".botao-voltar");
+const niveis = document.querySelectorAll(
+  ".magreza, .normal, .sobrepeso, .obesidade1, .obesidade2, .obesidade3"
+);
 
 // função para calcular o IMC
 const calcularImc = () => {
@@ -26,8 +29,24 @@ calcular.addEventListener("click", () => {
   } else {
     pagCalculo.style.display = "none";
     pagResultado.style.display = "flex";
+    resultadoIMC.style.color = cores[calcularSituacao()];
     resultadoIMC.textContent = calcularImc();
+    situacaoIMC.style.color = cores[calcularSituacao()];
     situacaoIMC.textContent = calcularSituacao();
+    if (calcularSituacao() === "Abaixo do peso") {
+      niveis[0].style.color = cores["Abaixo do peso"];
+    } else if (calcularSituacao() === "Peso normal") {
+      niveis[1].style.color = cores["Peso normal"];
+    } else if (calcularSituacao() === "Sobrepeso") {
+      niveis[2].style.color = cores["Sobrepeso"];
+    } else if (calcularSituacao() === "Obesidade grau 1") {
+      niveis[3].style.color = cores["Obesidade grau 1"];
+    } else if (calcularSituacao() === "Obesidade grau 2") {
+      niveis[4].style.color = cores["Obesidade grau 2"];
+    } else {
+      niveis[5].style.color = cores["Obesidade grau 3"];
+    }
+
     setTimeout(() => {
       pagResultado.classList.add("rotacao");
     }, 10);
@@ -36,6 +55,18 @@ calcular.addEventListener("click", () => {
     }, 1000);
   }
 });
+
+// cores dos níveis
+
+// cores das situações
+const cores = {
+  "Abaixo do peso": "#f1c40f",
+  "Peso normal": "#2ecc71",
+  Sobrepeso: "#f39c12",
+  "Obesidade grau 1": "#e67e22",
+  "Obesidade grau 2": "#d35400",
+  "Obesidade grau 3": "#c0392b",
+};
 
 // função para calcular a situação do IMC
 const calcularSituacao = () => {
@@ -71,7 +102,9 @@ btnVoltar.addEventListener("click", () => {
   setTimeout(() => {
     pagResultado.classList.remove("rotacao");
   }, 1000);
-
   peso.value = "";
   altura.value = "";
+  niveis.forEach((nivel) => {
+    nivel.style.color = "#fff";
+  });
 });

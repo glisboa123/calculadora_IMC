@@ -23,7 +23,6 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  transform: 1s;
 }
 
 .dados-calculadora {
@@ -34,7 +33,7 @@ body {
   width: 400px;
   background-color: #1e1e32;
   border-radius: 10px;
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .dados-calculadora.voltar {
@@ -112,7 +111,7 @@ input[type="button"] {
   gap: 20px;
   padding: 20px;
   text-align: center;
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .resultado.rotacao {
@@ -130,13 +129,11 @@ input[type="button"] {
 }
 
 .resultado .imc {
-  color: #d2c23b;
   font-size: 1.5rem;
 }
 
 .resultado .situacao {
   font-size: 1.2rem;
-  color: #d2c23b;
 }
 
 #tabela-imc {
