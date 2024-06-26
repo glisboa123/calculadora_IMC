@@ -23,7 +23,7 @@ const calcularImc = () => {
 // botão para calcular o IMC
 calcular.addEventListener("click", () => {
   calcularImc();
-  if (isNaN(calcularImc())) {
+  if (isNaN(calcularImc()) || calcularImc() <= 0) {
     alert("Preencha os campos corretamente!");
     return null;
   } else {
